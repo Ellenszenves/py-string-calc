@@ -1,16 +1,10 @@
-#Készítsen sztring összeadó, kivonó, összehasonlító, szorzó algoritmusokat! (4 fő) 
-#Az algoritmus paraméterként két pozitív egész számokat tartalmazó sztringet kap, melyekkel elvégzi a kívánt 
-#műveletet. Összeadás esetén visszatér a két szám összegét tartalmazó sztringgel. Kivonás esetén a két szám 
-#különbségét tartalmazó sztringgel. Összehasonlítás esetén a visszatérési érték legyen 1 ha az első szám a 
-#kisebb, legyen -1 ha a második paraméterként kapott szám a kisebb és 0, ha egyenlő a két szám. Szorzás 
-#esetén a szorzattal térjen vissza.  
-#Valósítsa meg azokat az algoritmusokat is, amelyek a negatív számokat is kezelik!
-#Importáljuk a sys modult, hogy elérjük az indító paramétereket
+"""Importáljuk a sys modult, hogy elérjük az indító paramétereket"""
 import sys
 #Szám lista
 correct_chars = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-#Számvizsgálat
+
 def char_check(int1:str, int2:str):
+    """Számvizsgálat"""
     res = []
     i = 0
     while i < len(int1):
@@ -30,21 +24,21 @@ def char_check(int1:str, int2:str):
             i = i + 1
     if 0 in res:
         return False
-    else:
-        return True
-    
-#Összeadás
-def sum(int1:str, int2:str) -> str:
+    return True
+
+def summa(int1:str, int2:str) -> str:
+    """Összeadás"""
     res_num = int(int1) + int(int2)
     return str(res_num)
 
-#Kivonás
 def extract(int1:str, int2:str) -> str:
+    """Kivonás"""
     res_num = int(int1) - int(int2)
     return str(res_num)
 
-#Összehasonlítás
 def compare(int1:str, int2:str) -> str:
+    """Összehasonlítás"""
+    res_num = None
     if int(int1) < int(int2):
         res_num = 1
     elif int(int1) > int(int2):
@@ -53,12 +47,13 @@ def compare(int1:str, int2:str) -> str:
         res_num = 0
     return str(res_num)
 
-#Szorzás
 def multiple(int1:str, int2:str) -> str:
+    """Szorzás"""
     res_num = int(int1) * int(int2)
     return str(res_num)
 
 def multiple_another_way(int1:str, int2:str) -> str:
+    """Másik szorzás"""
     i = 0
     res_num = 0
     while i < int(int2):
@@ -66,8 +61,8 @@ def multiple_another_way(int1:str, int2:str) -> str:
         i = i + 1
     return str(res_num)
 
-#Egyben kapott számok bontása
 def string_split(command:str, string:str):
+    """Egyben kapott számok bontása"""
     int1 = 0
     int2 = 0
     ints = string.split()
@@ -76,9 +71,9 @@ def string_split(command:str, string:str):
     elif len(ints) == 2:
         int1 = ints[0]
         int2 = ints[1]
-        if char_check(int1, int2) == True:
+        if char_check(int1, int2) is True:
             if command == "Összeadás":
-                print(sum(int1, int2))
+                print(summa(int1, int2))
             elif command == "Kivonás":
                 print(extract(int1, int2))
             elif command == "Szorzás":
@@ -94,15 +89,16 @@ def string_split(command:str, string:str):
     else:
         print("Túl kevés érték.")
 
-#Interaktív menü
+
 def inter_start():
+    """Interaktív menü"""
     print("Hello! Funkciók: Összeadás, Kivonás, Szorzás, Szorzás2, Összehasonlítás")
     int1 = input("Első szám: ")
     int2 = input("Második szám: ")
     func = input("Kívánt funkció: ")
-    if char_check(int1, int2) == True:
+    if char_check(int1, int2) is True:
         if func == "Összeadás":
-            print(sum(int1, int2))
+            print(summa(int1, int2))
         elif func == "Kivonás":
             print(extract(int1, int2))
         elif func == "Szorzás":
@@ -116,11 +112,11 @@ def inter_start():
     else:
         print("A számokban nem megfelelő karaktert észleltünk.")
 
-#Command
 def main_start(command, int1, int2):
-    if char_check(int1, int2) == True:
+    """Command"""
+    if char_check(int1, int2) is True:
         if command == "Összeadás":
-            print(sum(int1, int2))
+            print(summa(int1, int2))
         elif command == "Kivonás":
             print(extract(int1, int2))
         elif command == "Szorzás":
